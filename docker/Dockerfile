@@ -7,7 +7,7 @@ RUN apt-get update && \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Clone the repository
-RUN git clone https://github.com/TheCommsChannel/TC2-BBS-mesh.git
+RUN git clone https://github.com/MaxwellAllee/TC2-BBS-mesh.git
 
 ####
 
