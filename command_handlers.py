@@ -20,8 +20,16 @@ from utils import (
 # Read the configuration for menu options
 config = configparser.ConfigParser()
 config.read('config.ini')
+
+if 'menu' not in config:
+    logging.error("Error: 'menu' section not found in config.ini. Please ensure config.ini is created and correct.")
+    # In a real app we might want to exit or raise a clearer error, but for now let's just log and re-raise to fail fast but with a log
+    # or arguably we should provide defaults.
+    # Given the traceback showed it crashing here, let's provide a helpful message and let it crash or exit.
+    raise KeyError("Missing 'menu' section in config.ini. Did you copy example_config.ini to config.ini?")
+
 logging.info("====================================")
-logging.info("Loaded config: %s", config['menu'])
+logging.info("Loaded config from [menu] section")
 logging.info("====================================")
 main_menu_items = config['menu']['main_menu_items'].split(',')
 bbs_menu_items = config['menu']['bbs_menu_items'].split(',')
