@@ -20,7 +20,7 @@ from utils import (
 # Read the configuration for menu options
 config = configparser.ConfigParser()
 config.read('config.ini')
-
+logging.info("Loaded config: %s", config.sections())
 main_menu_items = config['menu']['main_menu_items'].split(',')
 bbs_menu_items = config['menu']['bbs_menu_items'].split(',')
 utilities_menu_items = config['menu']['utilities_menu_items'].split(',')
