@@ -5,3 +5,5 @@ services:
     volumes:
       - ./config:/home/mesh/bbs/config
     container_name: tc2-bbs-mesh
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
