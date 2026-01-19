@@ -33,4 +33,4 @@ COPY --from=build /TC2-BBS-mesh/example_config.ini ./config.ini
 COPY --from=build /TC2-BBS-mesh/fortunes.txt ./
 
 # Define the command to run
-ENTRYPOINT [ "python3", "/home/mesh/bbs/test_menu_handler.py" ]
+ENTRYPOINT [ "python3", "/home/mesh/bbs/server.py" ]
