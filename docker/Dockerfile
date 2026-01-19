@@ -27,8 +27,8 @@ RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
 COPY --from=build /TC2-BBS-mesh/*.py ./
 
 # Define config volume
-VOLUME /home/mesh/bbs/config
-WORKDIR /home/mesh/bbs/config
+VOLUME /home/mesh/bbs
+WORKDIR /home/mesh/bbs
 COPY --from=build /TC2-BBS-mesh/example_config.ini ./config.ini
 COPY --from=build /TC2-BBS-mesh/fortunes.txt ./
 
