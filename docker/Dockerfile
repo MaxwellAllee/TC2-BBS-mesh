@@ -1,10 +1,11 @@
 # From original Dockerfile at https://github.com/TheCommsChannel/TC2-BBS-mesh
 FROM debian:stable-slim AS build
 
+
 RUN apt-get update && \
-  apt-get install -y \
-  git \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
+apt-get install -y \
+git \
+&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Clone the repository
 RUN git clone https://github.com/MaxwellAllee/TC2-BBS-mesh.git
@@ -29,8 +30,9 @@ COPY --from=build /TC2-BBS-mesh/*.py ./
 # Define config volume
 VOLUME /home/mesh/bbs
 WORKDIR /home/mesh/bbs
-COPY --from=build /TC2-BBS-mesh/example_config.ini ./config.ini
-COPY --from=build /TC2-BBS-mesh/fortunes.txt ./
+COPY ./config.ini ./
+# COPY --from=build /TC2-BBS-mesh/example_config.ini ./config.ini
+# COPY --from=build /TC2-BBS-mesh/fortunes.txt ./
 
 # Define the command to run
 ENTRYPOINT [ "python3", "/home/mesh/bbs/server.py" ]
